@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require tinymce-jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
