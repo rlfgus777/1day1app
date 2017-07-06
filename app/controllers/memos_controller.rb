@@ -1,4 +1,6 @@
 class MemosController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+  
   # Create
   def new
     @memo = Memo.new
@@ -22,7 +24,8 @@ class MemosController < ApplicationController
   end
 
   def index
-    @memos = Memo.all
+    @memos = Memo.order(created_at: :DESC).page(params[:page]).per(10)
+    # aesc
   end
 
   # Update

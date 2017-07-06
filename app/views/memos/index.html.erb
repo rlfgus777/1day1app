@@ -1,4 +1,23 @@
-<h1>Memos#index</h1>
-<p>Find me in app/views/memos/index.html.erb</p>
+<h1>Hack Your Memo</h1>
 
-
+<%#= link_to('Memo 하러 가기', new_memo_path) if user_signed_in? %>
+<div class="table-responsive">
+  <table class="table table-fit">
+    <thead>
+    <tr>
+      <th>title</th>
+      <th>user</th>
+      <th>comments</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @memos.each do |memo| %>
+        <tr>
+          <td><%= link_to memo.title, memo_path(memo) %></td>
+          <td><%= memo.user.email %></td>
+          <td><%= memo.comments.count %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
