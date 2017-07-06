@@ -1,3 +1,14 @@
 <h1>Memos#show</h1>
 <p>Find me in app/views/memos/show.html.erb</p>
 <h1><%= @memo.title %></h1>
+<hr>
+<h4>by <a href="mailto:<%= @memo.user.email %>"><%= @memo.user.email %></a> </h4>
+<h5><p><%= icon 'time' %><%= local_time @memo.created_at %></p></h5>
+<% if current_user == @memo.user %>
+    <%= icon 'pencil' %><%= link_to '수정하기', edit_memo_path %> | <%= icon 'trash' %><%= link_to '삭제하기', memo_path, method: :delete %>
+<% end %>
+
+<hr>
+<%= @memo.content.html_safe %>
+<!--.html_safe 를 해주어야 우리가 저장한 형식을 볼수 있음-->
+<hr>
